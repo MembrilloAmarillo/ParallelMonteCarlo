@@ -35,12 +35,6 @@ Random::double_range( double r1, double r2 )
   return r_num;
 }
 
-inline double
-mi_funcion( double x )
-{
-  return x;
-}
-
 void*
 Integral_MonteCarlo( void * attr )
 {
@@ -53,10 +47,6 @@ Integral_MonteCarlo( void * attr )
 
   for( int i = 0; i < n_iteraciones; i++ )
     {
-      #if 0
-      double cx = Random::double_range(-4, 4);
-      double cy = Random::double_range(-4, 4);
-      #endif
       double cx = Random::double_normalized();
       double cy = Random::double_normalized();
       
@@ -101,7 +91,7 @@ main( int argc, char **argv )
     }
   pthread_attr_destroy( &thread_attr );
 
-  printf( "Valor de la integral: %lf\n", 4 * (double)n_exitos / ((double)n_iteraciones * 8) );
+  printf( "Value of PI approximated: %lf\n", 4 * (double)n_exitos / ((double)n_iteraciones * 8) );
   
   return 0;
 }
